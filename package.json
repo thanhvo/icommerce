@@ -1,1 +1,7 @@
-{}
+{
+  "devDependencies": {
+    "copyfiles": "^2.4.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2"
+  }
+}

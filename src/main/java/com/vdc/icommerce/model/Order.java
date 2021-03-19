@@ -25,7 +25,7 @@ public class Order {
     @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
     @Valid
-    private List<OrderProduct> orderProducts = new ArrayList<>();
+    private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
 
     @Transient
     public Double getTotalOrderPrice() {

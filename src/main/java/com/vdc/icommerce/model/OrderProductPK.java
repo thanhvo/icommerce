@@ -37,4 +37,19 @@ public class OrderProductPK implements Serializable {
     }
 
     // hashcode() and equals() methods
+    @Override
+    public final int hashCode() {
+        return (int) (order.getId() * product.getId());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof OrderProductPK))
+            return false;
+        OrderProductPK other = (OrderProductPK) o;
+
+        return this.order.getId() == other.order.getId() && this.product.getId() == other.product.getId();
+    }
 }

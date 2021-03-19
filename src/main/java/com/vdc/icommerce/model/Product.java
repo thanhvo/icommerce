@@ -16,16 +16,27 @@ public class Product {
 
     private Double price;
 
+    private String pictureUrl;
+
     private String brand;
 
     private String color;
 
     public Product() { }
 
-    public Product (long id, String name, double price, String brand, String color) {
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
+    }
+
+    public Product (long id, String name, double price, String pictureUrl, String brand, String color) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.pictureUrl = pictureUrl;
         this.brand = brand;
         this.color = color;
     }

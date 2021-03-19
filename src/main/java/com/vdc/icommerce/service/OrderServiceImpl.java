@@ -1,7 +1,7 @@
 package com.vdc.icommerce.service;
 
 import com.vdc.icommerce.model.Order;
-import com.vdc.icommerce.repository.OrderRepositoy;
+import com.vdc.icommerce.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,9 +12,8 @@ import java.time.LocalDate;
 @Transactional
 public class OrderServiceImpl implements OrderService {
 
-    // orderRepository constructor injection
     @Autowired
-    private OrderRepositoy orderRepository;
+    private OrderRepository orderRepository;
 
     @Override
     public Iterable<Order> getAllOrders() {

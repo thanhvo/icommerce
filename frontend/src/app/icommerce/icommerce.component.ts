@@ -12,14 +12,14 @@ export class IcommerceComponent implements OnInit {
   private collapsed = true;
   orderFinished = false;
 
-  @ViewChild('productsC')
-  productsC: ProductsComponent | undefined;
+  /**@ViewChild('productsC') **/
+  productsC: ProductsComponent;
 
-  @ViewChild('shoppingCartC')
-  shoppingCartC: ShoppingCartComponent | undefined;
+  /**@ViewChild('shoppingCartC') **/
+  shoppingCartC: ShoppingCartComponent;
 
-  @ViewChild('ordersC')
-  ordersC: OrdersComponent | undefined;
+  /** @ViewChild('ordersC') **/
+  ordersC: OrdersComponent;
 
   toggleCollapsed(): void {
     this.collapsed = !this.collapsed;
@@ -31,9 +31,9 @@ export class IcommerceComponent implements OnInit {
 
   reset() {
     this.orderFinished = false;
-    /*this.productsC.reset();
+    this.productsC.reset();
     this.shoppingCartC.reset();
-    this.ordersC.paid = false;*/
+    this.ordersC.paid = false;
   }
 
   constructor() {}

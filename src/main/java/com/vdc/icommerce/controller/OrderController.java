@@ -48,7 +48,7 @@ public class OrderController {
         //order.setStatus(OrderStatus.PAID.name());
         order = this.orderService.create(order);
 
-        List<OrderProduct> orderProducts = new ArrayList<>();
+        List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
         for (OrderProductDto dto : formDtos) {
             orderProducts.add(orderProductService.create(new OrderProduct(order, productService.getProduct(dto
                     .getProduct()

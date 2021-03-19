@@ -27,8 +27,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
     this.total = 0;
     this.orderFinished = false;
     this.onOrderFinished = new EventEmitter<boolean>();
-    this.orders = new ProductOrders();
-    this.sub = new Subscription();
   }
 
   ngOnInit() {

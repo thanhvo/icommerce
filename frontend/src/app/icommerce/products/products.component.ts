@@ -15,17 +15,10 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   selectedProductOrder: ProductOrder;
   private shoppingCartOrders: ProductOrders;
-  sub: Subscription | undefined;
+  sub: Subscription;
   productSelected: boolean = false;
 
-  constructor(private ecommerceService: IcommerceService) {
-    this.selectedProductOrder = new ProductOrder(
-      new Product(0, '', 1.0, 'image.local'),
-      0
-    );
-    this.shoppingCartOrders = new ProductOrders();
-    //this.sub = new Subscription();
-  }
+  constructor(private ecommerceService: IcommerceService) {}
 
   ngOnInit() {
     this.productOrders = [];
@@ -70,7 +63,7 @@ export class ProductsComponent implements OnInit {
           this.productOrders.push(new ProductOrder(product, 0));
         });
       },
-      (error: any) => console.log(error)
+      error => console.log(error)
     );
   }
 
