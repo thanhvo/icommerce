@@ -1,7 +1,7 @@
 import { ProductOrder } from '../models/product-order.model';
 import { Subject } from 'rxjs/internal/Subject';
 import { ProductOrders } from '../models/product-orders.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product.model';
 
@@ -32,7 +32,11 @@ export class IcommerceService {
   }
 
   getAllProducts() {
-    return this.http.get<Array<Product>>(this.productsUrl);
+    return this.http.get(this.productsUrl);
+  }
+
+  search(keyword: string) {
+    return this.http.get(`${this.productsUrl}?keyword=${keyword}`);
   }
 
   saveOrder(order: ProductOrders) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductOrder } from '../models/product-order.model';
 import { IcommerceService } from '../services/IcommerceService';
 import { Subscription } from 'rxjs/internal/Subscription';
@@ -17,6 +17,8 @@ export class ProductsComponent implements OnInit {
   private shoppingCartOrders: ProductOrders;
   sub: Subscription;
   productSelected: boolean = false;
+  @Input()
+  keyword: string;
 
   constructor(private ecommerceService: IcommerceService) {}
 
@@ -57,6 +59,20 @@ export class ProductsComponent implements OnInit {
 
   loadProducts() {
     this.ecommerceService.getAllProducts().subscribe(
+      (products: any[]) => {
+        this.products = products;
+        this.products.forEach(product => {
+          this.productOrders.push(new ProductOrder(product, 0));
+        });
+      },
+      error => console.log(error)
+    );
+  }
+
+  search(keyword) {
+    this.productOrders = [];
+    this.keyword = keyword.value;
+    this.ecommerceService.search(this.keyword).subscribe(
       (products: any[]) => {
         this.products = products;
         this.products.forEach(product => {
