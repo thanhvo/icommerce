@@ -2,10 +2,9 @@ package com.vdc.icommerce.controller;
 
 import com.vdc.icommerce.dto.OrderProductDto;
 import com.vdc.icommerce.exception.ResourceNotFoundException;
-import com.vdc.icommerce.form.OrderForm;
+import com.vdc.icommerce.dto.OrderForm;
 import com.vdc.icommerce.model.Order;
 import com.vdc.icommerce.model.OrderProduct;
-import com.vdc.icommerce.model.Product;
 import com.vdc.icommerce.service.OrderProductService;
 import com.vdc.icommerce.service.OrderService;
 import com.vdc.icommerce.service.ProductService;

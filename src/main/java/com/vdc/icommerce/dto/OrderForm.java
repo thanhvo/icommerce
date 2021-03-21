@@ -1,4 +1,4 @@
-package com.vdc.icommerce.form;
+package com.vdc.icommerce.dto;
 
 import com.vdc.icommerce.dto.OrderProductDto;
 

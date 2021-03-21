@@ -39,6 +39,10 @@ export class IcommerceService {
     return this.http.get(`${this.productsUrl}?keyword=${keyword}`);
   }
 
+  saveProduct (product: Product) {
+    return this.http.post(this.productsUrl, product);
+  }
+
   saveOrder(order: ProductOrders) {
     return this.http.post(this.ordersUrl, order);
   }

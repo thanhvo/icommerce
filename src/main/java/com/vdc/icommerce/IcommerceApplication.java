@@ -25,6 +25,8 @@ public class IcommerceApplication {
 			productService.save(new Product(5L, "Beer", 3.00, "http://placehold.it/200x100", "Tiger", "brown"));
 			productService.save(new Product(6L, "Phone", 500.00, "http://placehold.it/200x100", "Apple", "white"));
 			productService.save(new Product(7L, "Watch", 30.00, "http://placehold.it/200x100", "Rolex", "black"));
+			productService.save(new Product(8L, "Laptop", 2000.00, "http://placehold.it/200x100", "Apple", "white"));
+			productService.save(new Product(9L, "Shirt", 30.00, "http://placehold.it/200x100", "Banan Republic", "red"));
 		};
 	}
 	public static void main(String[] args) {

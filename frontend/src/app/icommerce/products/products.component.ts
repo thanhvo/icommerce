@@ -83,6 +83,11 @@ export class ProductsComponent implements OnInit {
     );
   }
 
+  changePrice(order: ProductOrder, price) {
+    order.product.price = price.value;
+    this.ecommerceService.saveProduct(order.product).subscribe();
+  }
+
   loadOrders() {
     this.sub = this.ecommerceService.OrdersChanged.subscribe(() => {
       this.shoppingCartOrders = this.ecommerceService.ProductOrders;
