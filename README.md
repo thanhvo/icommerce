@@ -36,4 +36,4 @@ Please execute the following CURL commands to verify APIs
 * Products  
 `curl -v http://localhost:8080/api/products`  
 * Orders  
-`curl -v http://localhost:8080/api/products`
+`curl -v http://localhost:8080/api/orders`
