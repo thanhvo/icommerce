@@ -13,11 +13,11 @@ Project is created with:
 
 ## Code structures and design diagrams
 * Back-end package diagram is located at resources/solution/package_diagram.png.  
-![alt text](https://github.com/thanhvo/icommerce/blob/main/resouces/solution/package_diagram.png?raw=true)
+![alt text](./resources/solution/package_diagram.png?raw=true)
 * Front-end class diagram is located at resources/solution/front_end.png.  
-![alt text](https://github.com/thanhvo/icommerce/blob/main/resouces/solution/front_end.png?raw=true)
+![alt text](./resources/solution/front_end.png?raw=true)
 * Database Entity Relationship Diagram is located at resources/db/icommerce.png.  
-![alt text](https://github.com/thanhvo/icommerce/blob/main/resouces/db/icommerce.png?raw=true)
+![alt text](./resources/db/icommerce.png?raw=true)
  
 ## Installation 
 1. Back-end application: you can use your favorite IDE (IntelliJ/Eclipse) to run application IcommerceApplication.
