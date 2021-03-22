@@ -1,10 +1,10 @@
 # Icommerce
 The project creates a very simple online shopping application to sell the products. The application is designed based on 
-Model-View-Controller(MVC) architectural pattern: a client accesses and manipulates product, order information in a data repository which is stored
-on the server. At the front-end side, the client is split into model and view components where model corresponds to the
-bussiness logic: search and order products and a web page to represent the list of products and orders. At the back-end, 
+Model-View-Controller(MVC) architectural pattern. Clients access and manipulate product, order information in a data repository which is stored
+on the server. At the front-end side, the client application is split into model and view components where model corresponds to the
+bussiness logic: searching and ordering products and a web page representing the list of products and orders. At the back-end, 
 the application server contains the server side model and data repository which contains database for products and orders.
-The front-end and back-end communicate with each via REST APIs.    
+The front-end and back-end communicate with each other via REST APIs.    
 
 ## Techonologies
 Project is created with:
