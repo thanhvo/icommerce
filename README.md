@@ -28,7 +28,8 @@ Or, you can use Maven to build and run the application from project home directo
 2. Front-end application: First, you need to install the latest version of npm, Angular and Node.js. Then, go to front-end 
 home directory and run application with following commands:   
     `cd front-end`  
-    `npm start`  
+    `npm update`  
+    `npm start`   
     Then you can access the web page at http://localhost:4200/  
 
 ## API Verification

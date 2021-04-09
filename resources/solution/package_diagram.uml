@@ -3,14 +3,14 @@
   <ID>JAVA</ID>
   <OriginalElement>com.vdc.icommerce</OriginalElement>
   <nodes>
-    <node x="0.0" y="336.2578125">com.vdc.icommerce.IcommerceApplication</node>
+    <node x="0.0" y="336.2578125">IcommerceApplication</node>
     <node x="492.94166666666666" y="336.2578125">com.vdc.icommerce.controller</node>
     <node x="98.57566287878785" y="257.2578125">com.vdc.icommerce.service</node>
     <node x="459.28832859848484" y="5.2578125">com.vdc.icommerce.model</node>
     <node x="308.98934659090907" y="148.2578125">com.vdc.icommerce.exception</node>
     <node x="509.98934659090907" y="148.2578125">com.vdc.icommerce.dto</node>
     <node x="90.98934659090907" y="148.2578125">com.vdc.icommerce.repository</node>
-    <node x="0.0" y="410.2578125">com.vdc.icommerce.IcommerceApplicationTests</node>
+    <node x="0.0" y="410.2578125">IcommerceApplicationTests</node>
   </nodes>
   <notes />
   <edges>
@@ -28,7 +28,7 @@
       <point x="520.7883285984849" y="118.2578125" />
       <point x="0.0" y="14.5" />
     </edge>
-    <edge source="com.vdc.icommerce.IcommerceApplication" target="com.vdc.icommerce.service">
+    <edge source="IcommerceApplication" target="com.vdc.icommerce.service">
       <point x="47.0" y="-14.5" />
       <point x="141.0" y="316.2578125" />
       <point x="132.82566287878785" y="316.2578125" />
@@ -93,7 +93,7 @@
       <point x="419.28832859848484" y="16.1328125" />
       <point x="-61.5" y="-3.625" />
     </edge>
-    <edge source="com.vdc.icommerce.IcommerceApplication" target="com.vdc.icommerce.model">
+    <edge source="IcommerceApplication" target="com.vdc.icommerce.model">
       <point x="-47.0" y="-14.5" />
       <point x="47.0" y="316.2578125" />
       <point x="52.375" y="316.2578125" />
