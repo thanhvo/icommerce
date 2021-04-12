@@ -1,0 +1,63 @@
+version: '3.6'
+
+services:
+  eureka-server:
+    image: 'eureka-server:latest'
+    build:
+      context: ./../eureka-server/docker
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+
+  product-service:
+    image: 'product-service:latest'
+    build:
+      context: ./../product-service/docker
+    ports:
+      - "8000:8000"
+    container_name: product-service
+    depends_on:
+      - product-ds
+      - eureka-server
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://product-ds:5432/productdb
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=abc123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  product-ds:
+    image: 'postgres:13.1-alpine'
+    container_name: product-ds
+    ports:
+      - "8100:5432"
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=abc123
+      - POSTGRES_DB=productdb
+
+  order-service:
+    image: 'order-service:latest'
+    build:
+      context: ./../order-service/docker
+    ports:
+      - "9000:9000"
+    container_name: order-service
+    depends_on:
+      - product-service
+      - order-ds
+      - eureka-server
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://order-ds:5432/orderdb
+      - SPRING_DATASOURCE_USERNAME=sa
+      - SPRING_DATASOURCE_PASSWORD=abc123
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  order-ds:
+    image: 'postgres:13.1-alpine'
+    container_name: order-ds
+    ports:
+      - "9100:5432"
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=abc123
+      - POSTGRES_DB=orderdb
