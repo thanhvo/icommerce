@@ -61,3 +61,12 @@ services:
       - POSTGRES_USER=sa
       - POSTGRES_PASSWORD=abc123
       - POSTGRES_DB=orderdb
+
+  web-server:
+    image: 'web-server:latest'
+    build:
+      context: ./../frontend/
+      dockerfile: ./docker/Dockerfile
+    container_name: web-server
+    ports:
+      - "4200:80"
