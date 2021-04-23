@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: web-server
+  name: web-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: web-server
+    spec:
+      containers:
+        - image: thanhvv/icommerce-web-server
+          name: web-server
+          resources: {}
+          ports:
+            - containerPort: 80
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-server
+spec:
+  selector:
+    app: web-server
+  ports:
+    - port: 4200
+      targetPort: 80
+  type: LoadBalancer

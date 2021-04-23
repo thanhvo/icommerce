@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: product-service
+  name: product-service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: product-service
+    spec:
+      containers:
+        - image: thanhvv/icommerce-product-service
+          name: product-service
+          resources: {}
+          ports:
+            - containerPort: 8000
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://product-ds:5432/productdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: sa
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: abc123
+            - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+              value: update
+          imagePullPolicy: Always
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product-service
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: LoadBalancer

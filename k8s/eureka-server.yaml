@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: eureka-server
+  name: eureka-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: eureka-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: eureka-server
+    spec:
+      containers:
+        - image: thanhvv/icommerce-eureka-server
+          name: eureka-server
+          ports:
+            - containerPort: 8761
+          resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-server
+spec:
+  selector:
+    app: eureka-server
+  ports:
+    - port: 8761
+      targetPort: 8761
+  type: LoadBalancer
