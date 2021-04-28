@@ -14,7 +14,3 @@ cp target/*.jar docker
 cd ../product-service
 ./mvnw clean package -DskipTests
 cp target/*.jar docker
-
-# build docker containers
-cd ../docker
-docker-compose up

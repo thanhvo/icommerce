@@ -4,10 +4,14 @@ import com.vvt.icommerce.orderservice.dto.OrderForm;
 import com.vvt.icommerce.orderservice.dto.OrderProductDto;
 import com.vvt.icommerce.orderservice.exception.ResourceNotFoundException;
 import com.vvt.icommerce.orderservice.model.Order;
+import com.vvt.icommerce.orderservice.model.OrderMessage;
 import com.vvt.icommerce.orderservice.model.OrderProduct;
+import com.vvt.icommerce.orderservice.model.OrderStatus;
+import com.vvt.icommerce.orderservice.service.OrderProducer;
 import com.vvt.icommerce.orderservice.service.OrderProductService;
 import com.vvt.icommerce.orderservice.service.OrderService;
 import com.vvt.icommerce.orderservice.service.ProductServiceProxy;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -24,9 +28,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/orders")
+@Slf4j
 public class OrderController {
     @Autowired
     private OrderService orderService;
+
+    @Autowired
+    private OrderProducer orderProducer;
 
     @Autowired
     private ProductServiceProxy productService;
@@ -49,7 +57,7 @@ public class OrderController {
         List<OrderProductDto> formDtos = form.getProductOrders();
         validateProductsExistence(formDtos);
         Order order = new Order();
-        //order.setStatus(OrderStatus.PAID.name());
+        order.setStatus(OrderStatus.PAID.name());
         order = this.orderService.create(order);
 
         List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
@@ -65,6 +73,11 @@ public class OrderController {
 
         order.setOrderProducts(orderProducts);
         this.orderService.update(order);
+
+        // Publish order to the queue
+        log.info("Publishing order: " + order.getId() + " " + order.getTotalOrderPrice());
+        OrderMessage orderMessage = new OrderMessage(order);
+        this.orderProducer.orders().send(orderMessage.getMessage());
 
         String uri = ServletUriComponentsBuilder
                 .fromCurrentServletMapping()
