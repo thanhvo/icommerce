@@ -1,7 +1,9 @@
 package com.vvt.icommerce.orderservice.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.Valid;
@@ -11,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "orders")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Order {
 
     @Id
@@ -22,7 +25,6 @@ public class Order {
 
     private String status;
 
-    @JsonManagedReference
     @OneToMany(mappedBy = "pk.order")
     @Valid
     private List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();

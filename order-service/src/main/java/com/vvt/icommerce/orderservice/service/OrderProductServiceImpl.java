@@ -19,6 +19,7 @@ public class OrderProductServiceImpl implements OrderProductService {
     public OrderProduct create(OrderProduct orderProduct) {
         var result =  this.orderProductRepository.save(orderProduct);
         result.setTotalPrice(orderProduct.getTotalPrice());
+        result.setPk(orderProduct.getPk());
         return result;
     }
 }

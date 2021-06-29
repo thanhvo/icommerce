@@ -74,7 +74,7 @@ public class OrderController {
         order.setOrderProducts(orderProducts);
         this.orderService.update(order);
 
-        // Publish order to the queue
+        // Publish order to Kafka topic
         log.info("Publishing order: " + order.getId() + " " + order.getTotalOrderPrice());
         OrderMessage orderMessage = new OrderMessage(order);
         this.orderProducer.orders().send(orderMessage.getMessage());

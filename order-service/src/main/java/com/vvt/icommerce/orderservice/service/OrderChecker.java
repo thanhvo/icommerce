@@ -11,16 +11,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OrderChecker {
 
-    private static final Long MAX_AMOUNT = 10000L;
-
     @Autowired
     private OrderConsumer orderConsumer;
 
     @StreamListener(OrderConsumer.ORDERS_IN)
     public void checkOrder(Order order) {
-        log.info("{} {} for ${}", order.getStatus(), order.getId(), order.getTotalOrderPrice());
+        log.info("Pulling order: {} for ${}", order.getStatus(), order.getId(), order.getTotalOrderPrice());
         OrderMessage orderMessage = new OrderMessage(order);
         orderConsumer.approved().send(orderMessage.getMessage());
-        log.info("{} {} for ${}", order.getStatus(), order.getId(), order.getTotalOrderPrice());
+        log.info("Publishing approved order: {} {} for ${}", order.getStatus(), order.getId(), order.getTotalOrderPrice());
     }
 }

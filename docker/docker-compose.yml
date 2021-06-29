@@ -4,7 +4,8 @@ services:
   eureka-server:
     image: 'eureka-server:latest'
     build:
-      context: ./../eureka-server/docker
+      context: ./../eureka-server
+      dockerfile: ./../eureka-server/docker/Dockerfile
     container_name: eureka-server
     ports:
       - "8761:8761"
@@ -12,7 +13,8 @@ services:
   product-service:
     image: 'product-service:latest'
     build:
-      context: ./../product-service/docker
+      context: ./../product-service
+      dockerfile: ./../product-service/docker/Dockerfile
     ports:
       - "8000:8000"
     container_name: product-service
@@ -38,7 +40,8 @@ services:
   order-service:
     image: 'order-service:latest'
     build:
-      context: ./../order-service/docker
+      context: ./../order-service
+      dockerfile: ./../order-service/docker/Dockerfile
     ports:
       - "9000:9000"
     container_name: order-service
@@ -109,6 +112,7 @@ services:
       # "`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-'"`-._,-
       # An important note about accessing Kafka from clients on other machines:
       # -----------------------------------------------------------------------
+      #
       #
       # The config used here exposes port 9092 for _external_ connections to the broker
       # i.e. those from _outside_ the docker network. This could be from the host machine
