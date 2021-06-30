@@ -5,4 +5,4 @@ COPY . /order-service
 RUN  cd /order-service && mvn clean package -DskipTests
 
 #run the spring boot application
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", "-Dblabla", "-jar","/order-service/target/order-service-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar","/order-service/target/order-service-0.0.1-SNAPSHOT.jar"]
