@@ -1,15 +1,17 @@
 # Icommerce
-The project creates a very simple online shopping application to sell the products. The application is designed based on 
-Model-View-Controller(MVC) architectural pattern. Clients access and manipulate product, order information in a data repository which is stored
-on the server. At the front-end side, the client application is split into model and view components where model corresponds to the
-bussiness logic: searching and ordering products and a web page representing the list of products and orders. At the back-end, 
-the application server contains the server side model and data repository which contains database for products and orders.
+The project creates a simple online shopping application to sell the products. The application is designed based on 
+Model-View-Controller(MVC) architectural pattern. Clients access and manipulate products, orders information in data repositories which are distributed
+on mulitple servers. At the front-end side, the client application is split into model and view components where model corresponds to the
+bussiness logic: searching and ordering products and a web page representing the list of products and orders.
+The back-end is decomposed into multiple micro-services. Each service has its own domain model and data repository. 
+The services communicate with each other via Kafka message broker. 
 The front-end and back-end communicate with each other via REST APIs.    
 
 ## Techonologies
 Project is created with:
-* Back-end: Java Spring Boot with JPA and H2 database at persistence layer.  
+* Back-end: Java Spring Boot with JPA and Postgres database at persistence layer.  
 * Front-end: Angular Version 11.2.5 and NodeJS version 14.16.0    
+* Messaging: Kafka  
 
 ## Code structures and design diagrams
 * Back-end package diagram is located at resources/solution/package_diagram.png.  
@@ -30,7 +32,12 @@ home directory and run application with following commands:
     `cd front-end`  
     `npm update`  
     `npm start`   
-    Then you can access the web page at http://localhost:4200/  
+    Then you can access the web page at http://localhost:4200/
+   
+## Deployment
+You can simply deploy the whole application using docker-compose.  
+    `cd docker`  
+    `docker-compose up -d`
 
 ## API Verification
 Please execute the following CURL commands to verify APIs
