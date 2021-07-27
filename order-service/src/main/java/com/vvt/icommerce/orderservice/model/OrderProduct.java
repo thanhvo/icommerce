@@ -20,7 +20,9 @@ public class OrderProduct {
     @Transient
     private Double totalPrice;
 
-    public OrderProduct() {}
+    public OrderProduct() {
+        pk = new OrderProductPK();
+    }
 
     public OrderProduct(Order order, Long productId, Integer quantity) {
         pk = new OrderProductPK();

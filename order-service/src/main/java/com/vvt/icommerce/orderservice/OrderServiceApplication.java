@@ -1,7 +1,7 @@
 package com.vvt.icommerce.orderservice;
 
-import com.vvt.icommerce.orderservice.service.OrderConsumer;
-import com.vvt.icommerce.orderservice.service.OrderProducer;
+import com.vvt.icommerce.orderservice.messaging.OrderConsumer;
+import com.vvt.icommerce.orderservice.messaging.OrderProducer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

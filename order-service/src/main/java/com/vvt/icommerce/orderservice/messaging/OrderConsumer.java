@@ -1,4 +1,4 @@
-package com.vvt.icommerce.orderservice.service;
+package com.vvt.icommerce.orderservice.messaging;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

@@ -7,7 +7,7 @@ import com.vvt.icommerce.orderservice.model.Order;
 import com.vvt.icommerce.orderservice.model.OrderMessage;
 import com.vvt.icommerce.orderservice.model.OrderProduct;
 import com.vvt.icommerce.orderservice.model.OrderStatus;
-import com.vvt.icommerce.orderservice.service.OrderProducer;
+import com.vvt.icommerce.orderservice.messaging.OrderProducer;
 import com.vvt.icommerce.orderservice.service.OrderProductService;
 import com.vvt.icommerce.orderservice.service.OrderService;
 import com.vvt.icommerce.orderservice.service.ProductServiceProxy;
@@ -57,7 +57,7 @@ public class OrderController {
         List<OrderProductDto> formDtos = form.getProductOrders();
         validateProductsExistence(formDtos);
         Order order = new Order();
-        order.setStatus(OrderStatus.PAID.name());
+        order.setStatus(OrderStatus.PENDING.name());
         order = this.orderService.create(order);
 
         List<OrderProduct> orderProducts = new ArrayList<OrderProduct>();
